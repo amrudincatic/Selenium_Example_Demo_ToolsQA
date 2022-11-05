@@ -1,0 +1,70 @@
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using New;
+using System;
+using OpenQA.Selenium;
+
+namespace New
+{
+    [TestClass]
+    public class Start
+
+    {
+        [TestInitialize]
+        public void Init()
+        {
+
+            TestArguments parameters = new TestArguments();
+
+            int a = int.Parse(parameters.browser);
+
+            Driver.Initialize(a);
+        }
+
+
+        [TestMethod]
+        public void TestMethod()
+        {
+            string subject = "",
+                   body = "";
+
+            TestArguments parameters = new TestArguments();
+            string URL = parameters.url;
+
+            OpenUrl.GoTo(URL);
+
+            //ovdje uvedemo nove methode, kao i stringove!!
+
+            string messageGoogle = GoogleSearch.SearchParameter("Academy387");
+
+            
+
+
+            if ((!messageGoogle.Contains("ERROR")) && (!messageContact.Contains("ERROR")) && (!messageClients.Contains("ERROR")) && (!messageBlog.Contains("ERROR")) && (!messageEvents.Contains("ERROR")) && (!messageInstructors.Contains("ERROR")))
+
+            {
+                subject = "Passed!!! " + subject;
+                body = "Test je prosao " + "\n" + messageGoogle + messageContact + messageClients + messageBlog + messageEvents + messageInstructors;
+            }
+            else
+            {
+                subject = "Failed!!! " + subject;
+                body = messageGoogle + messageContact + messageClients + messageBlog + messageEvents + messageInstructors;
+            }
+
+            Functions.TakeScreenShot();
+
+            //Functions.SendEmailAttachment(subject, body);
+
+            //Assert.IsTrue(subject.Contains("Passed"));
+            //Assert.IsFalse(subject.Contains("Failed"));
+
+
+        }
+
+        [TestCleanup]
+        public void Cleanup()
+        {
+            Driver.Close();
+        }
+    }
+}

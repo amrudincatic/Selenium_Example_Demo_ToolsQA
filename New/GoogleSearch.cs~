@@ -1,0 +1,176 @@
+﻿using System.Xml.Linq;
+using New;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+
+namespace New
+{
+    public class GoogleSearch
+    {
+        public static string SearchParameter(string word)
+        {
+            string message = "",
+                   messageGoogle = "";
+            string QA = "QA";
+            //string priceMin = "50";
+            //string priceMax = "500";
+
+
+
+            //word poziv na akciju rijecu u zagradi od te metode!!!!!!
+
+            try
+            {
+
+                var GoogleSearch = Driver.Instance.FindElement(By.Name("q"));
+                GoogleSearch.Click();
+                GoogleSearch.SendKeys(word); //a mozemo da ne pozivano ono u classi sto je u zagradi, vec da napisemo "Academy387"
+                GoogleSearch.Submit();
+
+                
+            }
+
+            catch (Exception e)
+            {
+                message += "ERROR!" + e.Message;
+            }
+            message += messageGoogle;
+
+            return message;
+
+
+        }
+
+
+        //svi elementi od metoda ispod su cudni, nekad hoce, nekad nece.....
+
+        public static string Contact()
+        {
+            string message = "",
+                   messageContact = "";
+
+            try
+            {
+
+                var ContactButton = Driver.Instance.FindElement(By.CssSelector("#bs-example-navbar-collapse-1 > ul.nav.navbar-nav.navbar-right > li:nth-child(6) > a"));
+                ContactButton.Click();
+            }
+
+            catch (Exception e)
+            {
+                message += "ERROR!!!" + e.Message;
+
+            }
+
+            message += messageContact;
+
+            return message;
+        }
+
+
+
+        //public static void Clients()
+        public static string Clients()
+        {
+            string message = "",
+                   messageClients = "";
+            try
+            {
+                var ClientsButton = Driver.Instance.FindElement(By.CssSelector("#bs-example-navbar-collapse-1 > ul.nav.navbar-nav.navbar-right > li:nth-child(5) > a"));
+                ClientsButton.Click();
+            }
+
+            catch (Exception e)
+            {
+                message += "ERROR!!!" + e.Message;
+
+            }
+
+            message += messageClients;
+
+            return message;
+
+        }
+
+        public static string Blog()
+        {
+            string message = "",
+                   messageBlog = "";
+            try
+            {
+                var BlogButton = Driver.Instance.FindElement(By.CssSelector("#bs-example-navbar-collapse-1 > ul.nav.navbar-nav.navbar-right > li:nth-child(4) > a"));
+                BlogButton.Click();
+            }
+
+            catch (Exception e)
+
+            {
+                message += "ERROR!!!" + e.Message;
+            }
+
+            message += messageBlog;
+
+            return message;
+        }
+
+
+        public static string Events()
+        {
+            string message = "",
+                   messageEvents = "";
+
+            try
+            {
+                var EventsButton = Driver.Instance.FindElement(By.CssSelector("#bs-example-navbar-collapse-1 > ul.nav.navbar-nav.navbar-right > li:nth-child(3) > a"));
+                EventsButton.Click();
+            }
+
+            catch (Exception e)
+
+            {
+                message += "ERROR!!!" + e.Message;
+            }
+
+            message += messageEvents;
+
+            return message;
+        }
+
+
+
+        public static string Instructors(string v)
+        {
+            string message = "",
+                   messageInstructors = "";
+
+            try
+            {
+                var InstructorsButton = Driver.Instance.FindElement(By.CssSelector("#bs-example-navbar-collapse-1 > ul.nav.navbar-nav.navbar-right > li:nth-child(2) > a"));
+                InstructorsButton.Click();
+
+                var N = Driver.Instance.FindElement(By.LinkText("N"));
+                N.Click();
+
+                var NemanjaPusara = Driver.Instance.FindElement(By.XPath("//*[@id=\"lecturers-container\"]/div/div[11]/div/a/div[1]/img"));
+                NemanjaPusara.Click();
+            }
+
+            catch (Exception e)
+
+            {
+                message += "ERROR!!!" + e.Message;
+            }
+
+            message += messageInstructors;
+            return message;
+
+
+        }
+
+
+    }
+}
+
+
+
+
