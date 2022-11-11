@@ -44,7 +44,7 @@ namespace ToolsQA
 
             try
             {
-                var ToolsQA = Driver.Instance.FindElement(By.CssSelector("#rso > div:nth-child(1) > div > div > div > div > div > div > div.yuRUbf > a > h3"));
+                var ToolsQA = Driver.Instance.FindElement(By.XPath("//*[@class=\"LC20lb MBeuO DKV0Md\"][.=\"ToolsQA\"]"));
                 ToolsQA.Click();
 
 
@@ -70,10 +70,10 @@ namespace ToolsQA
 
             try
             {
-                var Elements = Driver.Instance.FindElement(By.CssSelector("#app > div > div > div.home-body > div > div:nth-child(1) > div > div.avatar.mx-auto.white > svg"));
+                var Elements = Driver.Instance.FindElement(By.XPath("//*[@class=\"card-body\"]//*[.=\"Elements\"]"));
                 Elements.Click();
 
-                var TextBox = Driver.Instance.FindElement(By.XPath("/html/body/div[2]/div/div/div[2]/div[1]/div/div/div[1]/div/ul/li[1]/span"));
+                var TextBox = Driver.Instance.FindElement(By.XPath("//*[contains(@id,\"item-0\")]//*[.=\"Text Box\"]"));
                 TextBox.Click();
 
                 var FullName = Driver.Instance.FindElement(By.CssSelector("#userName"));
@@ -92,7 +92,7 @@ namespace ToolsQA
                 PermanentAdress.Click();
                 PermanentAdress.SendKeys("Adress 321");
 
-                var SubmitButton = Driver.Instance.FindElement(By.ClassName("btn btn-primary"));
+                var SubmitButton = Driver.Instance.FindElement(By.XPath("//*[@id=\"submit\"][@class=\"btn btn-primary\"]"));
                 SubmitButton.Click();
 
                 Functions.TakeScreenShot();

@@ -11,7 +11,7 @@ namespace ToolsQA
         {
             string message = "",
                 username = "amrudincatic@hotmail.com",
-                password = "****";
+                password = "??????";
 
 
             try
